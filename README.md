@@ -11,9 +11,13 @@ In addition, 20 points a scattered using Gaussian distribution with a mean=10 an
 The model finds the least squares solution, followed by a calculation of the loss functions.
 
 L1_loss=(1/n)*|y-y_pred|
+
 L2_loss = ((1/n) * (y-y_pred)^2)
+
 Huber_loss = where (|y - y_pred| < delta) -> 0.5 * (y - y_pred)^2, where: (|y - y_pred| >= delta) -> delta * |y - y_pred| - 0.5 * delta^2
+
 LogCosh_loss = log(cosh(y-y_pred)
+
 
 L1 is robust to outliers but it's derivatives are not continous.
 L2 is difficult with outliers but it's gradients are naturally adaptive.
