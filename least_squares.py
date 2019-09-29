@@ -8,7 +8,7 @@ def main():
     num_points = 20
     X = [0] * num_points*3
     Y = [0] * num_points*3
-
+    print('Gaussian distribution: %d points, mu=%d, sigma=%d' % (num_points, mu, sigma))
     for val in range(0, num_points):
         X[val] = gauss(mu, sigma)
         Y[val] = gauss(mu, sigma)
@@ -16,6 +16,7 @@ def main():
     for val in range(num_points, 3*num_points):
         X[val] = randint(round(mu * 0.1), round(mu*2))
         Y[val] = X[val]
+    print('Linear scattering with slope=1. %d points' % (num_points*2))
     LQ_model(X, Y, num_points)
 
 def LQ_model(x, y, num_points):
