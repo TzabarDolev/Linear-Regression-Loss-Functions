@@ -3,16 +3,22 @@ import matplotlib.pyplot as plt
 from random import gauss, randint
 
 def main():
+    # parameters:
     mu = 10
     sigma = 3
     num_points = 20
+
+    # initializing variables
     X = [0] * num_points*3
     Y = [0] * num_points*3
     print('Gaussian distribution: %d points, mu=%d, sigma=%d' % (num_points, mu, sigma))
+
+    # noise points
     for val in range(0, num_points):
         X[val] = gauss(mu, sigma)
         Y[val] = gauss(mu, sigma)
 
+    # creating linear data
     for val in range(num_points, 3*num_points):
         X[val] = randint(round(mu * 0.1), round(mu*2))
         Y[val] = X[val]
@@ -20,6 +26,7 @@ def main():
     LQ_model(X, Y, num_points)
 
 def LQ_model(x, y, num_points):
+    # linear regression model
     x_mean = np.mean(x)
     y_mean = np.mean(y)
     m_num = 0
@@ -33,6 +40,7 @@ def LQ_model(x, y, num_points):
     return
 
 def predictions(m, b, x, y, num_points):
+    # predicting the least squares error
     delta = 1
     y_pred = np.dot(m, x) + b
     plt.figure(0)
